@@ -1,0 +1,153 @@
+.variables {
+    &_list {
+        max-width: 850px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+
+        &_item {
+            display: flex;
+            justify-content: space-between;
+            max-width: 850px;
+            width: 100%;
+
+            &_name {
+                max-width: 200px;
+                font-size: 20px;
+                font-weight: 600;
+                width: 100%;
+            }
+
+            &_description {
+                max-width: 600px;
+                width: 100%;
+                font-size: 20px;
+
+                li {
+                    max-width: 600px;
+                    width: 100%;
+
+                }
+            }
+        }
+    }
+
+}
+
+
+@media all and (max-width: 770px) {
+    .variables {
+        &_list {
+            max-width: 650px;
+
+            &_item {
+                max-width: 650px;
+
+                &_name {
+                    max-width: 170px;
+                }
+
+                &_description {
+                    max-width: 460px;
+
+                    li {
+                        max-width: 460px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media all and (max-width: 430px) {
+    .variables {
+        &_list {
+            max-width: 400px;
+
+            &_item {
+                max-width: 400px;
+
+                flex-direction: column;
+
+                &_name {
+                    max-width: 400px;
+                }
+
+                &_description {
+                    max-width: 390px;
+
+                    ul {
+                        box-sizing: border-box;
+                        padding-left: 20px;
+                        max-width: 400px;
+                        width: 100%;
+                    }
+
+                    li {
+                        max-width: 350px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width: 380px) {
+    .variables {
+        &_list {
+            max-width: 360px;
+
+            &_item {
+                max-width: 360px;
+
+                &_name {
+                    max-width: 360px;
+                }
+
+                &_description {
+                    max-width: 360px;
+
+                    ul {
+                        max-width: 360px;
+                    }
+
+                    li {
+                        max-width: 360px;
+                        width: 100%;
+                        overflow-wrap: break-word;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media all and (max-width: 330px) {
+    .variables {
+        &_list {
+            max-width: 300px;
+
+            &_item {
+                max-width: 300px;
+
+                &_name {
+                    max-width: 300px;
+                }
+
+                &_description {
+                    max-width: 300px;
+
+                    ul {
+                        max-width: 300px;
+                    }
+
+                    li {
+                        max-width: 300px;
+                    }
+                }
+            }
+        }
+    }
+}

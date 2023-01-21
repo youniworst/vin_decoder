@@ -21,12 +21,11 @@ export const VinForm = ({className}) => {
             id="vin"
             name="vin"
             placeholder="VIN"
-            max="17"
           />
           {errors.vin && touched.vin ? (
             <span className={styles.form_error}>{errors.vin}</span>
           ) : null}
-          <button className={styles.form_button} type="submit">Submit</button>
+          <button className={styles.form_button} type="submit">Decode</button>
         </Form>
       )}
     </Formik>
