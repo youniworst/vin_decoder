@@ -14,7 +14,7 @@ export const VariablesPage = () => {
       <ul className={styles.variables_list}>
         {variables &&
           variables.map((item) => (
-            <li className={styles.variables_list_item}>
+            <li key={item.Name} className={styles.variables_list_item}>
               <p className={styles.variables_list_item_name}>{item.Name}</p>
               <div
                 className={styles.variables_list_item_description}

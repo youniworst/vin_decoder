@@ -7,7 +7,7 @@ export const VinHistory = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Vin history</h2>
+      <h2 className={styles.title}>Last VIN codes</h2>
       <ul className={styles.list}>
         {list.length > 0
           ? list.map((item, index) => <li key={index}>{item}</li>)
