@@ -1,11 +1,14 @@
-import { VinForm } from "../../components";
-import styles from './HomePage.module.scss'
+import { VinForm, VinHistory } from "../../components";
+import styles from "./HomePage.module.scss";
 
 export const HomePage = () => {
   return (
     <>
       <h1>Home</h1>
-      <VinForm className={styles.form}/>
+      <div className={styles.container}>
+        <VinForm className={styles.form} />
+        <VinHistory />
+      </div>
     </>
   );
 };

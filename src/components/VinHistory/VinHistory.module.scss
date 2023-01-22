@@ -1,0 +1,37 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    max-width: 200px;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    margin: 0;
+}
+
+.list {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    max-width: 200px;
+    height: 180px;
+    width: 100%;
+    margin: 0;
+    border: 2px solid gray;
+
+
+    li {
+        border: 1px solid black;
+        padding: 3px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    li:nth-last-child(1) {
+        margin: 0;
+    }
+}

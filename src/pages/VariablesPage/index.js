@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import $api from "../../axios";
 import styles from "./VariablesPage.module.scss";
 
 export const VariablesPage = () => {
   const [variables, setVariables] = useState("");
-  (() => {
-    $api
-      .get("vehicles/getvehiclevariablelist?format=json")
-      .then((res) => setVariables(res.data.Results));
-  })();
+  useEffect(() => {
+    $api.get("vehicles/getvehiclevariablelist?format=json").then((res) => {
+      console.log(res);
+      setVariables(res.data.Results);
+    });
+  }, []);
   return (
     <>
       <h1>Variables</h1>

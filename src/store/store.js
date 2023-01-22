@@ -1,5 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { historySlice } from "./history/historySlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    history: historySlice.reducer,
+  },
 });
