@@ -5,16 +5,16 @@ import { HomePage, VariablePage, VariablesPage } from "./pages";
 function App() {
   return (
     <main>
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="/variables" element={<VariablesPage />}>
-              <Route path=":variableId" element={<VariablePage />} />
-            </Route>
-            {/* <Route path="*" element={<NotFoundPage />} /> */}
-          </Routes>
-        </BrowserRouter>
-       
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="/variables">
+            <Route index element={<VariablesPage />} />
+            <Route path=":variableId" element={<VariablePage />} />
+          </Route>
+          {/* <Route path="*" element={<NotFoundPage />} /> */}
+        </Routes>
+      </BrowserRouter>
     </main>
   );
 }

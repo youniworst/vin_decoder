@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { setLoading } from "../../store/loading/loadingActions";
 import { decodeVin } from "../../utils";
 import styles from "./DecodedVin.module.scss";
@@ -7,12 +8,15 @@ import styles from "./DecodedVin.module.scss";
 export const DecodedVin = () => {
   const [data, setData] = useState(null);
   const [hasError, setHasError] = useState(false);
+
   const dispatch = useDispatch();
   const vin = useSelector((state) => state.actualDecodedVin.vin);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (vin) {
-      dispatch(setLoading(true))
+      dispatch(setLoading(true));
       decodeVin(vin)
         .then((res) => {
           setData(res);
@@ -24,11 +28,15 @@ export const DecodedVin = () => {
         })
         .finally(() => dispatch(setLoading(false)));
     }
-  }, [vin]);
+  }, [vin, dispatch]);
 
   const tableStyle = !hasError
     ? `${styles.table}`
     : `${styles.table} ${styles.error}`;
+
+  const onVariableClick = (e) => {
+    navigate(`/variables/${e.target.id}`);
+  };
 
   if (data)
     return (
@@ -46,7 +54,13 @@ export const DecodedVin = () => {
           {data.map((item) =>
             item.Value && item.Value !== "Not Applicable" ? (
               <tr key={item.Variable}>
-                <td className={styles.table_variable}>{item.Variable}</td>
+                <td
+                  onClick={onVariableClick}
+                  id={item.VariableId}
+                  className={styles.table_variable}
+                >
+                  {item.Variable}
+                </td>
                 <td className={styles.table_value}>{item.Value}</td>
               </tr>
             ) : null
