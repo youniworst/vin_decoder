@@ -1,0 +1,27 @@
+.table {
+    max-width: 800px;
+    width: 100%;
+    text-align-last: left;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 3px solid purple;
+
+    td {
+        border: 1px solid black;
+    }
+
+    &_variable {
+        max-width: 200px;
+        padding-right: 20px;
+        cursor: pointer;
+
+    }
+
+    &_variable:hover {
+        background-color: #ddd;
+    }
+
+    &_value {
+        max-width: 600px;
+    }
+}

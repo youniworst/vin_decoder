@@ -1,6 +1,7 @@
 import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { vinSchema } from "../../schemas";
+import { setVin } from "../../store/actualDecodedVin/actualDecodedVinActions";
 import { addVin } from "../../store/history/historyActions";
 import styles from "./VinForm.module.scss";
 
@@ -8,6 +9,7 @@ export const VinForm = ({ className }) => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
+    dispatch(setVin(values.vin));
     dispatch(addVin(values.vin));
   };
   const formStyles = className

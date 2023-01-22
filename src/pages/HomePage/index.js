@@ -1,4 +1,4 @@
-import { VinForm, VinHistory } from "../../components";
+import { DecodedVin, VinForm, VinHistory } from "../../components";
 import styles from "./HomePage.module.scss";
 
 export const HomePage = () => {
@@ -9,6 +9,7 @@ export const HomePage = () => {
         <VinForm className={styles.form} />
         <VinHistory />
       </div>
+      <DecodedVin/>
     </>
   );
 };
