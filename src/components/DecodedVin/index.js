@@ -6,7 +6,9 @@ import styles from "./DecodedVin.module.scss";
 export const DecodedVin = () => {
   const [data, setData] = useState(null);
   const [hasError, setHasError] = useState(false);
+
   const vin = useSelector((state) => state.actualDecodedVin.vin);
+
   useEffect(() => {
     vin &&
       decodeVin(vin).then((res) => {
@@ -22,17 +24,19 @@ export const DecodedVin = () => {
   const tableStyle = !hasError
     ? `${styles.table}`
     : `${styles.table} ${styles.error}`;
+
   if (data)
     return (
       <table className={tableStyle}>
         <thead>
           <tr>
             <th className={styles.table_head} colSpan={2}>
-              Decode VIN code result
+              Decode VIN code result - <span>{vin}</span>
               {hasError ? <span style={{ color: "red" }}> (error)</span> : null}
             </th>
           </tr>
         </thead>
+
         <tbody>
           {data.map((item) =>
             item.Value && item.Value !== "Not Applicable" ? (

@@ -29,6 +29,10 @@
         padding: 3px;
         text-align: center;
         margin-bottom: 5px;
+        cursor: pointer;
+    }
+    li:hover {
+        background-color: #ddd;
     }
 
     li:nth-last-child(1) {
