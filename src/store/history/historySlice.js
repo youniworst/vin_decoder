@@ -8,7 +8,8 @@ export const historySlice = createSlice({
   name: "history",
   initialState,
   reducers: {
-    addVin(state, action) {;
+    addVin(state, action) {
+      if(state.history.find(item=> item === action.payload)) return
       state.history = [...state.history, action.payload];
       if (state.history.length > 5)
         state.history = state.history
