@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "../../store/loading/loadingActions";
 import { decodeVin } from "../../utils";
 import styles from "./DecodedVin.module.scss";
 
 export const DecodedVin = () => {
   const [data, setData] = useState(null);
   const [hasError, setHasError] = useState(false);
-
+  const dispatch = useDispatch();
   const vin = useSelector((state) => state.actualDecodedVin.vin);
 
   useEffect(() => {
-    vin &&
-      decodeVin(vin).then((res) => {
-        setData(res);
-        const additionalErrorText = res.find(
-          (item) => item.Variable === "Additional Error Text"
-        ).Value;
-        additionalErrorText ? setHasError(true) : setHasError(false);
-        console.log(additionalErrorText);
-      });
+    if (vin) {
+      dispatch(setLoading(true))
+      decodeVin(vin)
+        .then((res) => {
+          setData(res);
+          const additionalErrorText = res.find(
+            (item) => item.Variable === "Additional Error Text"
+          ).Value;
+          additionalErrorText ? setHasError(true) : setHasError(false);
+          console.log(additionalErrorText);
+        })
+        .finally(() => dispatch(setLoading(false)));
+    }
   }, [vin]);
 
   const tableStyle = !hasError

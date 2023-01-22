@@ -1,14 +1,27 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Loader } from "../../components";
+import { setLoading } from "../../store/loading/loadingActions";
 import { getVehicleVariableList } from "../../utils";
 import styles from "./VariablesPage.module.scss";
 
 export const VariablesPage = () => {
   const [variables, setVariables] = useState("");
+
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.loading.loading);
+
   useEffect(() => {
-    getVehicleVariableList().then((res) => setVariables(res));
-  }, []);
+    dispatch(setLoading(true));
+    getVehicleVariableList()
+      .then((res) => setVariables(res))
+      .finally(() => dispatch(setLoading(false)));
+  }, [dispatch]);
+
   return (
     <>
+      {loading ? <Loader /> : null}
+
       <h1>Variables</h1>
 
       <ul className={styles.variables_list}>
